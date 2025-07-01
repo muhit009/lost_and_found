@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Found to Lost</title>
+</head>
+<body>
+    <h1>🔗 Found Items Matched to Lost Items</h1>
+
+    {% if matched_pairs %}
+        {% for found, matches in matched_pairs %}
+            <h2>🟢 Found: {{ found.title }}</h2>
+            <p>Category: {{ found.category }}</p>
+            <p>Description: {{ found.description }}</p>
+            <p>Found on: {{ found.date_found }}</p>
+            <p>Contact: {{ found.contact_name }} ({{ found.contact_email }}, {{ found.contact_phone }})</p>
+
+            <h3>🔍 Possible Lost Matches:</h3>
+            <ul>
+                {% for lost, score in matches %}
+                    <li>
+                        <strong>{{ lost.title }}</strong> ({{ score }}% match)<br>
+                        Description: {{ lost.description }}<br>
+                        Lost on: {{ lost.date_lost }}<br>
+                        Contact: {{ lost.contact_name }} ({{ lost.contact_email }}, {{ lost.contact_phone }})
+                    </li>
+                
+
+                {% endfor %}
+            </ul>
+            
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report a Found Item</title>
+</head>
+<body>
+    <h1>Report a Found Item</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>

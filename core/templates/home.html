@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost and Found</title>
+</head>
+<body>
+    <h1>Welcome to the Lost & Found system!</h1>
+    <a href="{% url 'post_lost' %}">Report a Lost Item</a>
+    <a href="{% url 'lost_items_list' %}">🔍 View All Lost Items</a>
+    <a href="{% url 'post_found' %}">📦 Report a Found Item</a>
+    <a href="{% url 'found_items_list' %}">🔎 View All Found Items</a>
+    <a href="{% url 'match_found_to_lost' %}">🧩 View Potential Matches (Employee Only)</a>
+
+
+</body>
+</html>

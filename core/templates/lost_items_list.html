@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Lost Items</title>
+</head>
+<body>
+    <h1>📋 Lost Items List</h1>
+
+    {% if lost_items %}
+        <ul>
+        {% for item in lost_items %}
+            <li>
+                <strong>{{ item.title }}</strong><br>
+                Category: {{ item.category }}<br>
+                Lost on: {{ item.date_lost }}<br>
+                Description: {{ item.description }}<br>
+                Contact: {{ item.contact_name }} ({{ item.contact_email }}, {{ item.contact_phone }})
+                <hr>
+                
+
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No lost items posted yet.</p>
+        <p>Status: {% if item.claimed %}✅ Claimed{% else %}❌ Not Claimed{% endif %}</p>
+        <a href="{% url 'claim_lost_item' item.id %}">Mark as Claimed</a>
+    {% endif %}
+
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>

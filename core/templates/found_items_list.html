@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Found Items</title>
+</head>
+<body>
+    <h1>📦 Found Items List</h1>
+
+    {% if found_items %}
+        <ul>
+        {% for item in found_items %}
+            <li>
+                <strong>{{ item.title }}</strong><br>
+                Category: {{ item.category }}<br>
+                Found on: {{ item.date_found }}<br>
+                Description: {{ item.description }}<br>
+                Contact: {{ item.contact_name }} ({{ item.contact_email }}, {{ item.contact_phone }})
+                
+                <hr>
+                <p>Status: {% if item.claimed %}✅ Claimed{% else %}❌ Not Claimed{% endif %}</p>
+
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No found items posted yet.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}">← Back to Home</a>
+</body>
+</html>
